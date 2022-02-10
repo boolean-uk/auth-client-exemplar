@@ -12,14 +12,29 @@ export default function App() {
         e.preventDefault();
         // Write your register code here
 
+        const response = await fetch('http://localhost:4000', {
+            method: 'POST',
+            body: JSON.stringify(user)
+        });
 
+        const json = await response.json();
+
+        setRegisterResponse(json);
     };
 
     const login = async (e) => {
         e.preventDefault();
         // Write your login code here
 
-        
+        const response = await fetch('http://localhost:4000', {
+            method: 'POST',
+            body: JSON.stringify(user)
+        });
+
+        const json = await response.json();
+
+        setLoginResponse(json);
+        localStorage.setItem('jwt', json.data);
     };
 
 
